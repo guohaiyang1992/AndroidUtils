@@ -8,7 +8,7 @@ import android.view.inputmethod.InputMethodManager;
 
 /**
  * Created by guohaiyang on 2017/5/2.
- 关闭键盘的方法，支持dialog、activity、fragement,不需要知道是哪个控件
+ 关闭键盘的方法，支持dialog、activity、fragement,不需要知道是哪个控件获取的焦点
  */
 
 public class KeyBoardUtils {
