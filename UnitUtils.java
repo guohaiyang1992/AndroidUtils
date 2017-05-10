@@ -4,7 +4,7 @@ import android.content.Context;
 
 /**
  * @ClassName: UnitUtils
- * @Description: 单位转换工具
+ * @Description: 单位转换工具s
  * @author ghy
  * @date 2016-9-12 上午11:14:37
  * 
