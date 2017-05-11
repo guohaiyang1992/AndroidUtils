@@ -8,3 +8,5 @@ android 工具类集合
   3.ThreadUtils --简单的线程切换工具类（特点，简单）</br>
   
   4.TaskManager --线程切换工具类（支持链式调用，不破坏原有逻辑），与其相关类Task（最小调度类）、ThreadUtils（线程切换类）</br>
+  
+  5.ViewHolder --视图缓存类（用于Listview、GridView、RecycleView）
