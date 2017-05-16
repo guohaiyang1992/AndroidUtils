@@ -9,4 +9,8 @@ android 工具类集合
   
   4.TaskManager --线程切换工具类（支持链式调用，不破坏原有逻辑），与其相关类Task（最小调度类）、ThreadUtils（线程切换类）</br>
   
-  5.ViewHolder --视图缓存类（用于Listview、GridView、RecycleView）
+  5.ViewHolder --视图缓存类（用于Listview、GridView、RecycleView）</br>
+  
+  6.StringUtils --字符串处理类（判断是否为null为空，字符串安全转int、float、double）</br>
+  
+  7.FileUtils --文件处理类（判断文件是否存在，删除旧文件创建文件夹）</br>
