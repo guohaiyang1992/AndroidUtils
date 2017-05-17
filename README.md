@@ -5,7 +5,7 @@ android 工具类集合
   
   2.UnitUtils --单位转换的工具类（支持 sp、dp、px的互相转换，注意进行初始化 init）</br>
   
-  3.ThreadUtils --简单的线程切换工具类（特点，简单）</br>
+  3.ThreadUtils --简单的线程工具类（切换线程、判断线程状态等）</br>
   
   4.TaskManager --线程切换工具类（支持链式调用，不破坏原有逻辑），与其相关类Task（最小调度类）、ThreadUtils（线程切换类）</br>
   
