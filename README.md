@@ -14,3 +14,5 @@ android 工具类集合
   6.StringUtils --字符串处理类（判断是否为null为空，字符串安全转int、float、double）</br>
   
   7.FileUtils --文件处理类（判断文件是否存在，删除旧文件创建文件夹）</br>
+
+  8.SingletonFactory --单例工厂类（通过反射生成单例对象，无需自己去写对应方法）</br>
