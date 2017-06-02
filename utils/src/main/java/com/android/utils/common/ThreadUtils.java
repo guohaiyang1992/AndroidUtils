@@ -1,4 +1,4 @@
-package com.ghy.utils.common;
+package com.android.utils.common;
 
 import android.os.Handler;
 import android.os.Looper;

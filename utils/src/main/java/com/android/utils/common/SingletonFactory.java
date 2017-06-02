@@ -1,4 +1,4 @@
-package com.ghy.utils.common;
+package com.android.utils.common;
 
 import java.lang.reflect.Constructor;
 import java.util.Collections;

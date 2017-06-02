@@ -1,6 +1,6 @@
 package com.ghy.utils;
 
-import com.ghy.utils.common.SingletonFactory;
+import com.android.utils.common.SingletonFactory;
 
 import org.junit.Test;
 

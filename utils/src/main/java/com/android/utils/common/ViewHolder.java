@@ -1,4 +1,4 @@
-package com.ghy.utils.common;
+package com.android.utils.common;
 
 import android.util.SparseArray;
 import android.view.View;

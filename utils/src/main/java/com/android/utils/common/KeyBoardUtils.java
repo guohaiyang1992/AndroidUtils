@@ -1,4 +1,4 @@
-package com.ghy.utils.common;
+package com.android.utils.common;
 
 import android.app.Activity;
 import android.app.Dialog;

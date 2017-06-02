@@ -1,4 +1,4 @@
-package com.lys.utils;
+package com.android.utils.common;
 
 import android.content.Context;
 import android.content.Intent;

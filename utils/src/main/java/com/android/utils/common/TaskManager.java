@@ -1,4 +1,4 @@
-package com.ghy.utils.common;
+package com.android.utils.common;
 
 /**
  * Created by guohaiyang on 2017/4/10.
