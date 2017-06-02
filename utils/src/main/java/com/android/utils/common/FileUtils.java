@@ -3,8 +3,10 @@ package com.android.utils.common;
 import java.io.File;
 
 /**
- * Created by guohaiyang on 2017/5/16.
+ * 特点：
  * 该工具类可以和StringUtils 结合可以判断地址是否符合标准
+ * <p>
+ * Author:Simon
  */
 
 public class FileUtils {

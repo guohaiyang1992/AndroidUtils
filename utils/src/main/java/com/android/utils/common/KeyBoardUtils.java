@@ -7,8 +7,10 @@ import android.support.v4.app.Fragment;
 import android.view.inputmethod.InputMethodManager;
 
 /**
- * Created by guohaiyang on 2017/5/2.
+ * 特点：
  * 关闭键盘的方法，支持dialog、activity、fragement,不需要知道是哪个控件获取的焦点
+ * <p>
+ * Author:Simon
  */
 
 public class KeyBoardUtils {

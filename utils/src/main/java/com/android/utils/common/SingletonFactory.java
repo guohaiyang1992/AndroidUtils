@@ -11,6 +11,7 @@ import java.util.logging.Logger;
  * 单例工厂
  * 用于使用单例的方式创建对象
  * <p>
+ * Author:Simon
  */
 public class SingletonFactory {
 

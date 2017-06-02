@@ -3,8 +3,8 @@ package com.android.utils.common;
 import android.text.TextUtils;
 
 /**
- * Created by guohaiyang on 2017/5/16.
  * 字符串工具类
+ * Author:Simon
  */
 
 public class StringUtils {
