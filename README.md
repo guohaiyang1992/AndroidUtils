@@ -24,3 +24,6 @@
  10.  [ObjectUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/ObjectUtils.java) --对象工具类（用于判断是不是null,支持多个或者单个）
 
  11.  [KeyBoardHelper](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/KeyBoardHelper.java) --键盘监听辅助类（用于弥补系统无法监听键盘状态的辅助类，支持对dialog和activity的监听）</br>
+
+ 12.  [ShotUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/ShotUtils.java) --截图工具类（用于截取activity、view、scrollview的图片）</br>
+
