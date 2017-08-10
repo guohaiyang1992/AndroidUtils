@@ -68,7 +68,7 @@ public class MTimer implements ITimer {
         if (status != START && status != RESUME) {
             return;
         }
-        //切换当前状态为 start
+        //切换当前状态为 pause
         status = PAUSE;
         realStopTimer(false);
     }
@@ -82,7 +82,7 @@ public class MTimer implements ITimer {
         if (status != PAUSE) {
             return;
         }
-        //切换当前状态为 start
+        //切换当前状态为 resume
         status = RESUME;
         realStartTimer(false);
     }
