@@ -20,11 +20,18 @@ public class MTimer implements ITimer {
     //--real time--
     private AtomicLong time;//时间的记录工具
 
+    //--action--
+    private static final int START = 0;
+    private static final int PAUSE = 1;
+    private static final int RESUME = 2;
+    private static final int STOP = 3;
+
+    private int status = STOP;//默认是stop
+
     private MTimer(long initDelay, long delay, ITimerChangeCallback[] callbacks) {
         this.initDelay = initDelay;
         this.delay = delay;
         this.callbacks = callbacks;
-        this.task = createTask();
     }
 
     //-----------------外部方法------------------------
@@ -43,6 +50,12 @@ public class MTimer implements ITimer {
      */
     @Override
     public void startTimer() {
+        //判断当前是不是stop,是的话开始运行
+        if (status != STOP) {
+            return;
+        }
+        //切换当前状态为 start
+        status = START;
         realStartTimer(true);
     }
 
@@ -51,6 +64,12 @@ public class MTimer implements ITimer {
      */
     @Override
     public void pauseTimer() {
+        //判断当前是不是start 是不是resume,如果是其中一个就可以
+        if (status != START && status != RESUME) {
+            return;
+        }
+        //切换当前状态为 start
+        status = PAUSE;
         realStopTimer(false);
     }
 
@@ -59,6 +78,12 @@ public class MTimer implements ITimer {
      */
     @Override
     public void resumeTimer() {
+        //判断当前是不是pause ,如果是则恢复
+        if (status != PAUSE) {
+            return;
+        }
+        //切换当前状态为 start
+        status = RESUME;
         realStartTimer(false);
     }
 
@@ -67,6 +92,8 @@ public class MTimer implements ITimer {
      */
     @Override
     public void stopTimer() {
+        //无论当前处于那种状态都可以stop
+        status = STOP;
         realStopTimer(true);
     }
 
@@ -82,9 +109,10 @@ public class MTimer implements ITimer {
         if (isToZero) {
             time = new AtomicLong(0);
         }
-        //重新生成timer,以及任务,如果不等于null,说明本身就是运行状态，或者resume状态
-        if (timer == null) {
+        //重新生成timer、task
+        if (timer == null && task == null) {
             timer = new Timer();
+            task = createTask();
             timer.scheduleAtFixedRate(task, initDelay, delay);
         }
     }
@@ -104,7 +132,12 @@ public class MTimer implements ITimer {
             timer.purge();
             timer.cancel();
             timer = null;
-            task = createTask();//重新创建task
+
+        }
+        //关闭当前任务
+        if (task != null) {
+            task.cancel();
+            task = null;
         }
     }
 
