@@ -28,6 +28,10 @@
  12.  [ShotUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/ShotUtils.java) --截图工具类（用于截取activity、view、scrollview的图片）</br>
 
   13.  [SpUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/SpUtils.java) --sharepreference的操作工具（可以对各种类型获取和保存，而且无需强转，而且方法名一致）</br>
+  
+   14.  [TimerUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/timer/TimerUtils.java) --计时工具类，可以开始、暂停、恢复、销毁。）</br>
+
+
 
 
 
