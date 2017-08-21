@@ -30,8 +30,7 @@
   13.  [SpUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/SpUtils.java) --sharepreference的操作工具（可以对各种类型获取和保存，而且无需强转，而且方法名一致）</br>
   
    14.  [TimerUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/timer/TimerUtils.java) --计时工具类，可以开始、暂停、恢复、销毁。</br>
-
-  15.  [ExpandAnimHelper](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/anim/expand/ExpandAnimHelper.java) --展开动画辅助类，可以展开、关闭、切换，支持所有的view,使用简单。</br>
+   15.  [ExpandAnimHelper](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/anim/expand/ExpandAnimHelper.java) --展开动画辅助类，可以展开、关闭、切换，支持所有的view,使用简单。</br>
 
 
 
