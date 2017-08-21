@@ -38,8 +38,8 @@ public class StringUtils {
      * @param s --内容
      * @return
      */
-    public static int safeStringToInt(String s) {
-        return safeStringToInt(s, DEFAULT_INT);
+    public static int safeStrToInt(String s) {
+        return safeStrToInt(s, DEFAULT_INT);
     }
 
     /**
@@ -49,7 +49,7 @@ public class StringUtils {
      * @param defaulInt --默认值
      * @return
      */
-    public static int safeStringToInt(String s, int defaulInt) {
+    public static int safeStrToInt(String s, int defaulInt) {
         try {
             return Integer.parseInt(s);
         } catch (Exception e) {
@@ -64,8 +64,8 @@ public class StringUtils {
      * @param s --内容
      * @return
      */
-    public static float safeStringToFloat(String s) {
-        return safeStringToFloat(s, DEFAULT_FLOAT);
+    public static float safeStrToFloat(String s) {
+        return safeStrToFloat(s, DEFAULT_FLOAT);
     }
 
     /**
@@ -75,7 +75,7 @@ public class StringUtils {
      * @param defaultFloat --默认值
      * @return
      */
-    public static float safeStringToFloat(String s, float defaultFloat) {
+    public static float safeStrToFloat(String s, float defaultFloat) {
         try {
             return Integer.parseInt(s);
         } catch (Exception e) {
@@ -89,8 +89,8 @@ public class StringUtils {
      * @param s --内容
      * @return
      */
-    public static double safeStringToDouble(String s) {
-        return safeStringToDouble(s, DEFAULT_DOUBLE);
+    public static double safeStrToDouble(String s) {
+        return safeStrToDouble(s, DEFAULT_DOUBLE);
     }
 
     /**
@@ -100,7 +100,7 @@ public class StringUtils {
      * @param defaultDouble --默认值
      * @return
      */
-    public static double safeStringToDouble(String s, double defaultDouble) {
+    public static double safeStrToDouble(String s, double defaultDouble) {
         try {
             return Integer.parseInt(s);
         } catch (Exception e) {

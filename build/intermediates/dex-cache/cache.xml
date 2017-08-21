@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
+        jar="/Users/guohaiyang/github/FromClone/AndroidUtils/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6a0baad600ffaffe6a0c5673aedde1da9951fa92">
+        <dex dex="/Users/guohaiyang/github/FromClone/AndroidUtils/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_16c987cfd120a776eea5c1b54b1e8810dff48344/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/guohaiyang/github/FromClone/AndroidUtils/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
         <dex dex="/Users/guohaiyang/github/FromClone/AndroidUtils/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_d875cd166f2288f7714850da25c88ecef1dd3ce3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/guohaiyang/github/FromClone/AndroidUtils/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b008413bda93f8731b590153481531eabb34be59">
-        <dex dex="/Users/guohaiyang/github/FromClone/AndroidUtils/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_16c987cfd120a776eea5c1b54b1e8810dff48344/classes.dex" />
     </item>
 
 </items>
