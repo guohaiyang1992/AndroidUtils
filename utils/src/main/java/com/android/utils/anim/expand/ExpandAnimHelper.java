@@ -3,7 +3,6 @@ package com.android.utils.anim.expand;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
@@ -102,12 +101,6 @@ public class ExpandAnimHelper {
         return this;
     }
 
-    @Deprecated
-    /**暂未使用*/
-    public ExpandAnimHelper setOritation(@LinearLayoutCompat.OrientationMode int oritation) {
-        this.oritation = oritation;
-        return this;
-    }
 
     /**
      * 获取当前的展开状态
