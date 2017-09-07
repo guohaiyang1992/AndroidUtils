@@ -5,8 +5,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.android.utils.view.popu.Direction;
 import com.android.utils.view.popu.PopuwindowHelper;
@@ -18,7 +19,7 @@ import com.android.utils.view.popu.PopuwindowHelper;
  */
 
 public class PopuwindowActivity extends Activity {
-    private TextView testBtn;
+    private ImageView testBtn;
     private int x[] = {
             Direction.CENTER_HOR, Direction.ALIGN_LEFT, Direction.ALIGN_RIGHT, Direction.TO_LEFT, Direction.TO_RIGHT
     };
@@ -30,9 +31,10 @@ public class PopuwindowActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popuwindow);
-        testBtn = (TextView) findViewById(R.id.testBtn);
-        View view = LayoutInflater.from(this).inflate(R.layout.popuwindow_test, null);
-        PopupWindow popupWindow = new PopupWindow(view, 300, 300);
+        testBtn = (ImageView) findViewById(R.id.testBtn);
+        View view = LayoutInflater.from(this).inflate(R.layout.popuwindow_test, null);// 此方法会导致你设置的布局的父容器的宽高失效，所以会按照子view宽高进行
+//        PopupWindow popupWindow = new PopupWindow(view, -2, 300); //wrap_content 然后布局界面 内布局 写具体值和wrap-content 都是ok 的
+        PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, 400);
         popupWindow.setOutsideTouchable(true);
         //-------------------此处的backgroundAlpha是辅助popuwindow 出现时背景变灰，如果不需要则可不填写------------------------
         final PopuwindowHelper helper = new PopuwindowHelper.Builder()
@@ -63,6 +65,9 @@ public class PopuwindowActivity extends Activity {
                 //--测试设置margin--
 //                helper.showAndMarginLeft(v, Direction.TO_RIGHT | Direction.ALIGN_TOP, 20); //在v的右侧并且设置marginleft=20px(此处最好设置dp)
                 //还有其他方法设置margin 此处就不一一测试了，可以自行尝试
+//                helper.showAndMarginLeft();
+//                helper.show(v, Direction.TO_LEFT);
+//                helper.showAndMarginLeft(v,  Direction.TO_LEFT|Direction.ALIGN_TOP, 0);
             }
         });
 

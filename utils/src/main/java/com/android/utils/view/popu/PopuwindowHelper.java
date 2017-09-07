@@ -1,23 +1,16 @@
 package com.android.utils.view.popu;
 
 import android.app.Activity;
+import android.graphics.Rect;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import java.lang.ref.WeakReference;
 
-import static com.android.utils.view.popu.Direction.ABOVE;
-import static com.android.utils.view.popu.Direction.ALIGH_BOTTOM;
-import static com.android.utils.view.popu.Direction.ALIGN_LEFT;
-import static com.android.utils.view.popu.Direction.ALIGN_RIGHT;
-import static com.android.utils.view.popu.Direction.ALIGN_TOP;
-import static com.android.utils.view.popu.Direction.BELOW;
-import static com.android.utils.view.popu.Direction.CENTER_HOR;
-import static com.android.utils.view.popu.Direction.CENTER_VER;
-import static com.android.utils.view.popu.Direction.TO_LEFT;
-import static com.android.utils.view.popu.Direction.TO_RIGHT;
-
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 
 /**
  * description: 用于增强对popuwindow的操作，比如位置，相对位置，显示（加阴影），隐藏（去阴影）
@@ -37,6 +30,9 @@ public class PopuwindowHelper implements PopupWindow.OnDismissListener {
     //--TAG--
     private static final String TAG = "PopuwindowHelper";
 
+    //--popuwindow 宽高--
+    private int popuHeight = 0;
+    private int popuWidth = 0;
 
     /**
      * helper的构造函数的
@@ -44,10 +40,12 @@ public class PopuwindowHelper implements PopupWindow.OnDismissListener {
      * @param popu           待操作的popuwindow
      * @param backGroudAlpha 背景的透明度（0.0-1.0）
      */
-    private PopuwindowHelper(PopupWindow popu, float backGroudAlpha) {
+    private PopuwindowHelper(PopupWindow popu, float backGroudAlpha, int popuWidth, int popuHeight) {
         this.backGroudAlpha = backGroudAlpha;
         popuwindowRef = new WeakReference<PopupWindow>(popu);
         context = (Activity) popu.getContentView().getContext();
+        this.popuWidth = popuWidth;
+        this.popuHeight = popuHeight;
     }
 
     //--------------------具体的显示方法-----------------------
@@ -58,7 +56,7 @@ public class PopuwindowHelper implements PopupWindow.OnDismissListener {
      * @param anchor --目标view
      */
     public void show(View anchor) {
-        show(anchor, ALIGN_LEFT | BELOW, 0, 0, 0, 0);
+        show(anchor, Direction.ALIGN_LEFT | Direction.BELOW, 0, 0, 0, 0);
     }
 
     /**
@@ -133,48 +131,48 @@ public class PopuwindowHelper implements PopupWindow.OnDismissListener {
         //--解析方向中的y--
         int y = 0;
         //--上方--
-        if (Direction.hasValue(direction, ABOVE)) {
-            y = 0 - popuwindowRef.get().getHeight() - anchor.getHeight();
+        if (Direction.hasValue(direction, Direction.ABOVE)) {
+            y = 0 - popuHeight - anchor.getHeight();
         }
         //--下方不需要做处理--
 
         //--center_ver--
-        if (Direction.hasValue(direction, CENTER_VER)) {
+        if (Direction.hasValue(direction, Direction.CENTER_VER)) {
             y = 0 - anchor.getHeight() / 2;
         }
 
         //--相邻上方--
-        if (Direction.hasValue(direction, ALIGN_TOP)) {
+        if (Direction.hasValue(direction, Direction.ALIGN_TOP)) {
             y = 0 - anchor.getHeight();
         }
 
         //--相邻下方--
-        if (Direction.hasValue(direction, ALIGH_BOTTOM)) {
-            y = 0 - popuwindowRef.get().getHeight();
+        if (Direction.hasValue(direction, Direction.ALIGH_BOTTOM)) {
+            y = 0 - popuHeight;
         }
 
         //--解析方向中的x--
         int x = 0;
         //--在右侧--
-        if (Direction.hasValue(direction, TO_RIGHT)) {
+        if (Direction.hasValue(direction, Direction.TO_RIGHT)) {
             x = 0 + anchor.getWidth();
         }
 
         //--在左侧--
-        if (Direction.hasValue(direction, TO_LEFT)) {
-            x = 0 - popuwindowRef.get().getWidth();
+        if (Direction.hasValue(direction, Direction.TO_LEFT)) {
+            x = 0 - popuWidth;
         }
 
         //--相邻右侧--
-        if (Direction.hasValue(direction, ALIGN_RIGHT)) {
-            x = 0 + anchor.getWidth() - popuwindowRef.get().getWidth();
+        if (Direction.hasValue(direction, Direction.ALIGN_RIGHT)) {
+            x = 0 + anchor.getWidth() - popuWidth;
         }
 
         //--相邻左侧 是默认的不需处理--
 
         //--center_hor--
-        if (Direction.hasValue(direction, CENTER_HOR)) {
-            x = 0 + anchor.getWidth() / 2 - popuwindowRef.get().getWidth() / 2;
+        if (Direction.hasValue(direction, Direction.CENTER_HOR)) {
+            x = 0 + anchor.getWidth() / 2 - popuWidth / 2;
         }
 
         //--处理margin--
@@ -274,6 +272,8 @@ public class PopuwindowHelper implements PopupWindow.OnDismissListener {
     public static class Builder {
         private float backGroudAlpha = 1.0f; //activity的背景透明度
         private PopupWindow popu = null;//当前操作的popuwindow
+        private int height, width; //popuwindow 的宽高
+
 
         /**
          * 用于设置 背景 透明度 （修改activity window）
@@ -303,10 +303,34 @@ public class PopuwindowHelper implements PopupWindow.OnDismissListener {
          */
         public PopuwindowHelper build() {
             //--此为必填项--
-            if (popu == null) {
+            if (popu == null && popu.getContentView() == null) {
                 throw new NullPointerException("popuwindow 不允许为null,检查是否进行了设置？！=>popuwindow(PopupWindow popupWindow) ");
             }
-            return new PopuwindowHelper(popu, backGroudAlpha);
+
+            //--获取数据，看是否需要测量--
+            boolean isNeedMeasure = false;
+            if (popu.getHeight() < 0 || popu.getWidth() < 0) {
+                isNeedMeasure = true;
+            }
+
+            //--测量宽高(当外部window 未设置属性的时候，以内部布局为准，此时需要测量内部宽高，反之如果设置了，以设置宽高为准)--
+            if (isNeedMeasure) {
+                popu.getContentView().measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+                height = popu.getContentView().getMeasuredHeight();
+                width = popu.getContentView().getMeasuredWidth();
+            }
+
+            //--检查window宽高是否存在--
+            if (popu.getHeight() > 0) {
+                height = popu.getHeight();
+            }
+            if (popu.getWidth() > 0) {
+                width = popu.getWidth();
+            }
+
+            //--return PopuwindowHelper--
+            return new PopuwindowHelper(popu, backGroudAlpha, width, height);
+
         }
 
     }
