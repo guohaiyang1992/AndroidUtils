@@ -1,6 +1,7 @@
 package com.android.utils.common;
 
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.v4.util.LongSparseArray;
 import android.support.v4.util.SimpleArrayMap;
 import android.util.SparseArray;
@@ -103,6 +104,18 @@ public class ObjectUtils {
      */
     public static boolean isNotEmpty(final Object obj) {
         return !isEmpty(obj);
+    }
+
+    /**
+     * 检查对象是不是null,如果是null 则抛出NullPointerException
+     * 注意：如果校验不通过，则后续的操作都不会执行
+     *
+     * @param obj    需要判断的对象
+     * @param errMsg 如果出错时的提示信息
+     */
+    public static void checkNotNull(final Object obj, @NonNull String errMsg) {
+        //--如果是null--
+        if (!notNull(obj)) ExceptionUtils.throwNullPointerException(errMsg);
     }
 
 
