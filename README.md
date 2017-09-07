@@ -33,6 +33,8 @@
    
    15.  [ExpandAnimHelper](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/anim/expand/ExpandAnimHelper.java) --展开动画辅助类，可以展开、关闭、切换，支持所有的view,使用简单。</br>
 
+   16.  [PopuwindowHelper](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/view/popu/PopuwindowHelper.java) --popuwindow辅助类，可以控制popuwindow相对于view的位置，可设置margin,可设置显示背景变灰和消失背景恢复。</br>
+
 
 
 
