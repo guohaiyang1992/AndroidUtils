@@ -118,5 +118,9 @@ public class ObjectUtils {
         if (!notNull(obj)) ExceptionUtils.throwNullPointerException(errMsg);
     }
 
+    public static boolean isNull(Object object) {
+        return object == null;
+    }
+
 
 }

@@ -18,7 +18,7 @@ import com.android.utils.common.ThreadUtils;
  */
 
 public class ShotActivity extends Activity {
-    private ImageView showShotIv;
+    private ImageView showShotIv, testIv;
 
 
     @Override
@@ -26,6 +26,7 @@ public class ShotActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shot);
         showShotIv = (ImageView) findViewById(R.id.show_shot_iv);
+        testIv = (ImageView) findViewById(R.id.test_shot_iv);
         shotActivity(null);
     }
 
@@ -33,19 +34,25 @@ public class ShotActivity extends Activity {
     //有状态栏
     public void shotActivity(View view) {
 
-
-        ThreadUtils.runInBackGroundThread(new Runnable() {
+        ShotUtils.shotActivity(ShotActivity.this, new ShotUtils.ShotCallback() {
             @Override
-            public void run() {
-                final Bitmap bitmap = ShotUtils.shotActivity(ShotActivity.this);
-                ThreadUtils.runInUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        showShotIv.setImageBitmap(bitmap);
-                    }
-                });
+            public void onShot(Bitmap bitmap) {
+                showShotIv.setImageBitmap(bitmap);
             }
         });
+
+//        ThreadUtils.runInBackGroundThread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                ShotUtils.shotActivity(ShotActivity.this, new ShotUtils.ShotCallback() {
+//                    @Override
+//                    public void onShot(Bitmap bitmap) {
+//                        showShotIv.setImageBitmap(bitmap);
+//                    }
+//                });
+//            }
+//        });
 
     }
 

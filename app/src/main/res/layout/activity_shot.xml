@@ -22,6 +22,14 @@
     </LinearLayout>
 
     <ImageView
+        android:layout_marginTop="40dp"
+        android:id="@+id/test_shot_iv"
+        android:background="@mipmap/ic_launcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_marginTop="40dp"
         android:id="@+id/show_shot_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
