@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 
 /**
- * description: 用于activity、View、listView、recycleView、scrollView截图
- * author: Simon
+ * 用于activity、View、listView、recycleView、scrollView截图
+ *
+ * @author: Simon
  * created at 2017/7/30 下午6:01
  * 注意：setDrawingCacheEnabled(false) 内部会销毁缓存
  */
-
 public class ShotUtils {
     private static final String TAG = "ShotUtils";
 

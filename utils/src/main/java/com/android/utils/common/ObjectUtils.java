@@ -19,31 +19,31 @@ import java.util.Map;
  * 1.判断对象集是不是null
  * 2.判断对象是不是 空
  * <p>
- * autour: Simon
+ *
+ * @author: Simon
  * created at 2017/6/14
  */
 
 public class ObjectUtils {
 
     /**
-     * 判断传入参数是否有null
+     * 判断传入参数是否有null(没有一个null)
      *
      * @param objects -需要判断的对象集
      * @return true：没有null false:有null
      */
     public static boolean notNull(Object... objects) {
-
-        if (objects != null && objects.length > 0) {
-            for (Object ob : objects) {
-                if (ob == null) {
-                    return false;
-                }
-            }
-            return true;
-
-        } else {
+        //首先判断原始数据不是null 和空
+        if (objects == null || objects.length == 0) {
             return false;
         }
+        //遍历确认所有数据都不是null，如果有一个是null则返回fasle
+        for (Object ob : objects) {
+            if (ob == null) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -115,11 +115,43 @@ public class ObjectUtils {
      */
     public static void checkNotNull(final Object obj, @NonNull String errMsg) {
         //--如果是null--
-        if (!notNull(obj)) ExceptionUtils.throwNullPointerException(errMsg);
+        if (!notNull(obj)) {
+            ExceptionUtils.throwNullPointerException(errMsg);
+        }
     }
 
     public static boolean isNull(Object object) {
         return object == null;
+    }
+
+    /**
+     * 判断内容全部是null（全部是null）
+     *
+     * @param objects 内容集合
+     * @return true:表示全部是null false:表示有不是null
+     */
+    public static boolean isAllNull(Object... objects) {
+        //内容本身为null
+        if (objects == null || objects.length == 0) {
+            return true;
+        }
+        //所有内容中有一个不是null,返回false
+        for (Object ob : objects) {
+            if (ob != null) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 判断内容中包含null(至少一个)
+     *
+     * @param objects
+     * @return
+     */
+    public static boolean hasNull(Object... objects) {
+        return !notNull(objects);
     }
 
 
