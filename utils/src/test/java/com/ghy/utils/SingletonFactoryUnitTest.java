@@ -9,7 +9,7 @@ import static org.junit.Assert.assertNotNull;
 
 
 /**
- * Created by guohaiyang on 2017/6/1.
+ * Created by simon on 2017/6/1.
  * SingletonFactory的单元测试类，主要测试它的生成方法
  */
 
