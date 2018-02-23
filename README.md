@@ -39,6 +39,9 @@
 
    18.  [WorkManager](https://github.com/guohaiyang1992/AndroidUtils/tree/master/utils/src/main/java/com/android/utils/common/work) -- 用于让子线程执行队列任务，即可保证执行顺序又可保证不阻塞线程。</br>
 
+   19.  [NetUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/NetUtils.java) -- 用于获取网络相关信息的工具类。</br>
+
+
 
 
    
