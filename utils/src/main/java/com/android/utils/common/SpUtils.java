@@ -8,7 +8,8 @@ import java.util.Map;
 
 /**
  * description: sp 的操作工具类
- * author: Simon
+ *
+ * @author: Simon
  * created at 2017/8/1 下午4:01
  */
 
@@ -93,14 +94,16 @@ public class SpUtils {
 
     private static void checkConfig() {
         //判断上下文环境和名称是否符合规范
-        if (context == null || TextUtils.isEmpty(FILE_NAME))
+        if (context == null || TextUtils.isEmpty(FILE_NAME)) {
             throw new RuntimeException("当前缺少必备的运行环境，是否运行=>SpUtils.init() ?");
+        }
     }
 
     private static void checkSp() {
         //判断上下文环境和名称是否符合规范
-        if (sp == null)
+        if (sp == null) {
             throw new RuntimeException("当前运行出错，错误信息：sp初始化失败！");
+        }
     }
 
     /**

@@ -3,10 +3,11 @@ package com.android.utils.common;
 import android.app.Application;
 
 /**
- * 特点：
  * 通过反射获取application实例，支持自定义application
- * <p>
- * Author:Simon
+ *
+ * @author Simon
+ * @version v1.0
+ * @date 2018/2/23
  */
 
 public class AppUtils {

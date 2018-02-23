@@ -4,7 +4,10 @@ import android.text.TextUtils;
 
 /**
  * 字符串工具类
- * Author:Simon
+ *
+ * @author Simon
+ * @version v1.1
+ * @date 2018/2/23
  */
 
 public class StringUtils {
@@ -77,7 +80,7 @@ public class StringUtils {
      */
     public static float safeStrToFloat(String s, float defaultFloat) {
         try {
-            return Integer.parseInt(s);
+            return Float.parseFloat(s);
         } catch (Exception e) {
             return defaultFloat;
         }
@@ -102,7 +105,7 @@ public class StringUtils {
      */
     public static double safeStrToDouble(String s, double defaultDouble) {
         try {
-            return Integer.parseInt(s);
+            return Double.parseDouble(s);
         } catch (Exception e) {
             return defaultDouble;
         }

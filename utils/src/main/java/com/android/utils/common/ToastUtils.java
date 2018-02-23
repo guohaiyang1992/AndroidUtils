@@ -21,7 +21,7 @@ import android.widget.Toast;
  * 该工具类使用到了ThreadUtils（切换线程）,AppUtils（获取application）
  * <p>
  * <p>
- * author:Simon
+ * @author:Simon
  */
 public final class ToastUtils {
     //--参数--
