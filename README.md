@@ -4,7 +4,7 @@
 ---
   
 
- 1. [KeyBoardUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/KeyBoardUtils.java)  --关闭键盘的工具类（支持activity、dialog、fragement,无需传入对应的控件）
+ 1. [KeyBoardUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/KeyBoardUtils.java)  --关闭键盘的工具类（支持activity、dialog、fragment,无需传入对应的控件）
 
  2. [UnitUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/UnitUtils.java) --单位转换的工具类（支持 sp、dp、px的互相转换，注意进行初始化 init）
  3. [ThreadUtils](https://github.com/guohaiyang1992/AndroidUtils/blob/master/utils/src/main/java/com/android/utils/common/ThreadUtils.java) --简单的线程工具类（切换线程、判断线程状态等）
