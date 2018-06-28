@@ -39,7 +39,7 @@ public class ObjectUtils {
         }
         //遍历确认所有数据都不是null，如果有一个是null则返回fasle
         for (Object ob : objects) {
-            if (ob == null) {
+            if (isEmpty(ob)) {
                 return false;
             }
         }
