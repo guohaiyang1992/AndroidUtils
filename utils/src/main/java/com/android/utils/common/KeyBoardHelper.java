@@ -19,11 +19,11 @@ import java.lang.reflect.Field;
  * <p>
  * //dialog使用说明：
  * 1.在dialog的oncreate或者构造方法内进行创建 -》 getInstance(object)
- * 2.设置监听 setKeyBoardStatusLisener
+ * 2.设置监听 setKeyBoardStatusListener
  * 3.一般情况下上面两步即可，但特殊情况下会导致监听丢失，可在dilaog.show()内使用 reset（）方法即可
  * //activity使用说明：
  * 1.在oncreate方法内进行创建-》etInstance(object)
- * 2.设置监听 setKeyBoardStatusLisener
+ * 2.设置监听 setKeyBoardStatusListener
  * <p>
  * Author:Simon
  */
@@ -40,7 +40,7 @@ public class KeyBoardHelper {
 
     //---公共状态值---
     private boolean isActivity = false;
-    private IKeyBoardStatusLisener lisener = null;
+    private IKeyBoardStatusListener Listener = null;
     private int DEFAULT_KEYBOARD_HEIGHT = 300;
     private ViewTreeObserver.OnGlobalLayoutListener globalLayoutListener = null;
 
@@ -76,6 +76,7 @@ public class KeyBoardHelper {
         mChildOfContent = content.getChildAt(0);
         statusBarHeight = getStatusBarHeight();
         globalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
             public void onGlobalLayout() {
                 dispatchLayoutChange();
             }
@@ -87,9 +88,8 @@ public class KeyBoardHelper {
      * 分发界面变化的事件
      */
     private void dispatchLayoutChange() {
-        Log.i("ghy", "currHeight is change ");
         if (isActivity()) {
-            onActivityChanghe();
+            onActivityChange();
         } else {
             onDialogChange();
         }
@@ -99,29 +99,23 @@ public class KeyBoardHelper {
      * dialog界面发生变化的时候回调
      */
     private void onDialogChange() {
-        Log.v("ghy", "onDialogChange");
-
         int locationYNow = computeLocationY();
-
         if (locationYNow != locationY) {
-
             int heightDifference = Math.abs(locationY - locationYNow);
             if (heightDifference > DEFAULT_KEYBOARD_HEIGHT) {
-                Log.v("ghy", locationY + ":" + locationYNow);
-                if (locationY > locationYNow) { //上一次大于当前的，说明之前是关闭，现在是打开 参考window左上Y坐标
-                    notifyLisner(true);
+                //上一次大于当前的，说明之前是关闭，现在是打开 参考window左上Y坐标
+                if (locationY > locationYNow) {
+                    notifyListener(true);
                 } else {
-                    notifyLisner(false);
+                    notifyListener(false);
                 }
             }
-
             locationY = locationYNow;
         }
-        Log.v("ghy", "合并" + locationY + ":" + locationYNow);
     }
 
     /**
-     * 寻找对应的contentview
+     * 寻找对应的contentView
      *
      * @return
      */
@@ -169,7 +163,7 @@ public class KeyBoardHelper {
     /**
      * activity 界面变化回调
      */
-    private void onActivityChanghe() {
+    private void onActivityChange() {
         //计算当前可用高度
         int usableHeightNow = computeUsableHeight();
         //当前高度不等于之前的，进行判断
@@ -177,9 +171,9 @@ public class KeyBoardHelper {
             int usableHeightSansKeyboard = mChildOfContent.getRootView().getHeight();
             int heightDifference = usableHeightSansKeyboard - usableHeightNow;//计算出高度差值
             if (heightDifference > DEFAULT_KEYBOARD_HEIGHT) {//大于默认键盘高度则认为显示了键盘，反之隐藏
-                notifyLisner(true);
+                notifyListener(true);
             } else {
-                notifyLisner(false);
+                notifyListener(false);
             }
             usableHeightPrevious = usableHeightNow;
         }
@@ -190,9 +184,9 @@ public class KeyBoardHelper {
      *
      * @param isShow --键盘的显示状态
      */
-    private void notifyLisner(boolean isShow) {
-        if (lisener != null) {
-            lisener.onKeyBoardStatusChange(isShow);
+    private void notifyListener(boolean isShow) {
+        if (Listener != null) {
+            Listener.onKeyBoardStatusChange(isShow);
         }
     }
 
@@ -229,17 +223,22 @@ public class KeyBoardHelper {
     /**
      * 键盘状态监听接口
      */
-    public interface IKeyBoardStatusLisener {
+    public interface IKeyBoardStatusListener {
+        /**
+         * 当键盘状态变化时回调
+         *
+         * @param isShow
+         */
         void onKeyBoardStatusChange(boolean isShow);
     }
 
     /**
      * 设置键盘状态监听回调
      *
-     * @param lisener
+     * @param Listener
      */
-    public void setKeyBoardStatusLisener(IKeyBoardStatusLisener lisener) {
-        this.lisener = lisener;
+    public void setKeyBoardStatusListener(IKeyBoardStatusListener Listener) {
+        this.Listener = Listener;
     }
 
     /**
